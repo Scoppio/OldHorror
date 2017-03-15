@@ -39,10 +39,10 @@ public class LanguageSelection : MonoBehaviour {
 		}
 	}
 
-	public void SetLanguage(string lang) {
+	public void SetLanguage(string lang, bool Io = false) {
 		Debug.Log (lang + " selected");
 		if (languages.Contains (lang)) {
-			if (lang != selectedLanguage) {
+			if (lang != selectedLanguage || Io == true) {
 				selectedLanguage = lang;
 				PopulateDialogs ();
 				OnLanguageLoad ();
@@ -79,7 +79,6 @@ public class LanguageSelection : MonoBehaviour {
 			}
 		}
 		if (i <= dialogsBag.Count - 1) {
-			
 			return dialogsBag [i];
 		}
 		Debug.Log (i.ToString () + " " + (dialogsBag.Count -1 ).ToString() );
@@ -95,9 +94,7 @@ public class LanguageSelection : MonoBehaviour {
 	void Update () {
 		if (reload) {
 			reload = false;
-			Builder ();
-			OnLanguageLoad ();
+			SetLanguage (selectedLanguage, true);
 		}
-
 	}
 }
