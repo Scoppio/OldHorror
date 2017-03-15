@@ -6,20 +6,21 @@ id,annotation,pt-br,en-us
 4,New Game,Novo Jogo,New Game
 5,Load,Continuar Jogo,Continue Game
 6,Erase,Apagar Jogo,Erase Game
-7,,,
-8,,,
-9,,,
-10,ClueTitle,Esfera Rosa,Pink Sphere
-11,ClueText,"Algumas pessoas dizem que essa é uma esfera magenta, mas eles estão errados, essa é uma esfera rosa!","Some people say this is a red sphere, but they are wrong, this is a pink sphere!"
-12,ClueTag,Esfera Rosa,Pink Sphere
-13,ClueTag,Esfera Magenta,Red Sphere
-14,ClueTitle,Livro de Teste,Test Book
-15,ClueText,"Esse é um livro de testes, não tem nada de interessante ou de importante nele, mesmo.","This is a test book, there is nothing of interest or imporant on it, really."
-16,ClueTag,Teste,Test
-17,ClueTag,Apenas um livro,Just a book
-18,GrammarTitle,O #animal# e o #adjetivo# #objeto#, The #animal# and the #adjective# #object#
-19,GrammarText,Aqui entra um longo texto sobre o #animal#,Here enters a long text about the #animal_en#
-20,GrammarTag,Livro #adjetivo#,#adjective# book
-21,GrammarTag,Marcas de #sujeira#,markings of #dirty#
-22,,,
-23,,,
+7,#Adjective,"velho,novo,estranho,moderno,rustico,soberbo,magnanimo,fragil,bom,ruim,grande,pequeno,minúsculo,gigantesco,pesado,gorduroso","old,new,weird,awesome,great,small,giant,minuscule,heavy,light,bent,ancient,alien"
+8,#Color,"vermelha,verde,amarela,azul,roxa,marrom,laranja,branca","red,green,blue,yellow,pink,purple,brown,white,cyan,magenta"
+9,#Metals,"ouro,prata,titanio,tungstenio,bronze,latão,aluminio,bromio,niobio","gold,platinum,silver,aluminium,titanium,bromium,niobium"
+10,#Animal,"papagaio,arara,tartaruga,cachorro,elefante,ganso,pato,hamster,rato,carpa,galinha,porco,girafa","falcon,kestrel,mouse,lion,tiger,dog,cat,chicken,pig,giraffe,elephant"
+11,#Dirty,"sangue,terra,cha,vinho,cafe,gosma #Color#,tinta #Color#,nanquim,oleo","blood,mud,tea,wine,coffe,#Color# slime,paint,ink,oil"
+12,#Object,"torre,jarro,carro,avião,livro,computador,cartao de credito,camafeu,trofeu de #Metals#,cavalo de pau,calice de #Metals#","tower,jar,car,airplane,book,computer,credit card,#Metals# trophy,wooden horse,#Metals# chalice"
+13,ClueTitle,Esfera Rosa,Pink Sphere
+14,ClueText,"Algumas pessoas dizem que essa e uma esfera #Color#, mas eles estão errados, essa é uma esfera rosa!","Some people say this is a #Color# sphere, but they are wrong, this is a pink sphere!"
+15,ClueTag,Esfera Rosa,Pink Sphere
+16,ClueTag,Esfera #Color#,#Color# Sphere
+17,ClueTitle,Livro de Teste,Test Book
+18,ClueText,"Esse e um livro de testes, nao tem nada de interessante ou de importante nele, mesmo.","This is a test book, there is nothing of interest or imporant on it, really."
+19,ClueTag,Teste,Test
+20,ClueTag,Apenas um livro,Just a book
+21,GrammarTitle,"O #Animal# e o #Adjective# #Object#","The #Animal# and the #Adjective# #Object#"
+22,GrammarText,"Aqui entra um longo texto sobre o #Animal#",Here enters a long text about the #Animal#
+23,GrammarTag,Livro #Adjective# sobre um #Animal#,#Adjective# book about a #Animal#
+24,GrammarTag,Tem marcas de #Dirty#,There is a #Dirty# stain

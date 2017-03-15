@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Tracery;
 
 public class ItemOfInterest : MonoBehaviour {
 	[SerializeField] private Transform pointOfInterest = null;
@@ -35,7 +36,7 @@ public class ItemOfInterest : MonoBehaviour {
 		bagOfWords = GameObject.FindGameObjectWithTag ("GameController")
 			.GetComponent<LanguageSelection> ();
 
-		OnLanguageLoad ();
+		//OnLanguageLoad ();
 	}
 
 	private void OnLanguageLoad () {

@@ -9,9 +9,12 @@ public class NarrativeGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Grammar grammar = new Grammar();
-		grammar.PushRules("origin", new string[]{"Hello, #name#!", "#name#, #name#!"});
-		grammar.PushRules("name", new string[]{"Max", "world"});
-
+		
+		grammar.PushRules("mensagem", "mensagem,mensaginha,mensajona,bagaça".Split(','));
+		grammar.PushRules("coisas", "coisas,trens,bagulhos,trambolhos".Split(','));
+		grammar.PushRules("sujeira", "porra,chocolate,terra,sujeira,gosma #cor#,tinta #cor#".Split(','));
+		grammar.PushRules("origin", new string[]{"Essa é uma #mensagem# gerada pelo Tracery, aqui veremos #coisas# cobertos por #sujeira#!"});
+		grammar.PushRules("cor", "verde,vermelha,azul,preta,roxa".Split(','));
 		string expanded = grammar.Flatten("#origin#");
 		print (expanded);
 
