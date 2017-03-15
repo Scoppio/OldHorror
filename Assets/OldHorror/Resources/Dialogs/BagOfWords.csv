@@ -1,0 +1,25 @@
+id,annotation,pt-br,en-us
+0,GameTitle,Antigos Horrores,Old Horrors
+1,Subtitle,Jogo desenvolvido por Lucas Scoppio,Game developed by Lucas Scoppio
+2,Developer Twitter,@developerscoppio,@developerscoppio
+3,Test,Teste,Test
+4,New Game,Novo Jogo,New Game
+5,Load,Continuar Jogo,Continue Game
+6,Erase,Apagar Jogo,Erase Game
+7,,,
+8,,,
+9,,,
+10,ClueTitle,Esfera Rosa,Pink Sphere
+11,ClueText,"Algumas pessoas dizem que essa é uma esfera magenta, mas eles estão errados, essa é uma esfera rosa!","Some people say this is a red sphere, but they are wrong, this is a pink sphere!"
+12,ClueTag,Esfera Rosa,Pink Sphere
+13,ClueTag,Esfera Magenta,Red Sphere
+14,ClueTitle,Livro de Teste,Test Book
+15,ClueText,"Esse é um livro de testes, não tem nada de interessante ou de importante nele, mesmo.","This is a test book, there is nothing of interest or imporant on it, really."
+16,ClueTag,Teste,Test
+17,ClueTag,Apenas um livro,Just a book
+18,GrammarTitle,O #animal# e o #adjetivo# #objeto#, The #animal# and the #adjective# #object#
+19,GrammarText,Aqui entra um longo texto sobre o #animal#,Here enters a long text about the #animal_en#
+20,GrammarTag,Livro #adjetivo#,#adjective# book
+21,GrammarTag,Marcas de #sujeira#,markings of #dirty#
+22,,,
+23,,,
