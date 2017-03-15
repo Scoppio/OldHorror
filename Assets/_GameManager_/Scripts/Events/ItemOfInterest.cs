@@ -134,7 +134,6 @@ public class ItemOfInterest : MonoBehaviour {
 	void ColisionChanger() {
 		Physics.IgnoreLayerCollision (8, 9, colisionState);
 		colisionState = !colisionState;
-		Debug.Log (colisionState);
 	}
 
 	public void ItWasHit() {
