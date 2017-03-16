@@ -27,6 +27,14 @@ public class LanguageSelection : MonoBehaviour {
 		Builder ();
 	}
 
+	public bool IsPopulated ( ) {
+		if (dialogsBag != null && dialogsBag.Count > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	private void Builder () {
 		if (csvFile == null) {
 			string file = Application.dataPath + pathFile;

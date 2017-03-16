@@ -18,10 +18,14 @@ public class ItemOfInterest : MonoBehaviour {
 	[SerializeField] private int idTitle = 0;
 	[SerializeField] private int idText = 0;
 	[SerializeField] private List<int> idTags = null;
+	[SerializeField] private int idReject = 0;
+	[SerializeField] private int idAccept = 0;
 
 	[ReadOnly] [SerializeField] private string clueTitle = null;
 	[ReadOnly] [SerializeField] private string clueText = null;
 	[ReadOnly] [SerializeField] private List<string> tags = null;
+	[ReadOnly] [SerializeField] private string rejectText = null;
+	[ReadOnly] [SerializeField] private string acceptText = null;
 
 	private Rigidbody ownRigidbody;
 	private Vector3 startingPoint;
@@ -64,7 +68,9 @@ public class ItemOfInterest : MonoBehaviour {
 
 	private void OnLanguageLoad () {
 		clueTitle = bagOfWords.getDialog (idTitle);
-		clueText =  bagOfWords.getDialog (idText);
+		clueText = bagOfWords.getDialog (idText);
+		rejectText = bagOfWords.getDialog (idReject);
+		acceptText = bagOfWords.getDialog (idAccept);
 
 		Debug.Log (bagOfWords.getDialog (idTitle));
 
@@ -154,6 +160,8 @@ public class ItemOfInterest : MonoBehaviour {
 				Panels.s_title = this.clueTitle;
 				Panels.s_text = this.clueText;
 				Panels.s_tags = this.tags;
+				Panels.s_reject = this.rejectText;
+				Panels.s_accept = this.acceptText;
 				Debug.Log ("Panel title and text sent!");
 			}
 			if (!InteractScript.isHoldingObject) {

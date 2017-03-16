@@ -10,9 +10,11 @@ public class Panels : MonoBehaviour {
 
 	public static bool s_cluePanel = false;
 
-	public static string s_title = "Here should be a Title";
+ 	public static string s_title = "Here should be a Title";
 	public static string s_text = "If there is no text here, something is very wrong!";
 	public static List<string> s_tags;
+	public static string s_reject;
+	public static string s_accept;
 
 	private float leafOffset;
 	private float frameOffset;
@@ -40,39 +42,6 @@ public class Panels : MonoBehaviour {
 	private Rect windowRect1 = new Rect (500, 140, 350, 510);
 	private Rect windowRect4 = new Rect ( 0, 0, Screen.width * 0.45f, Screen.height * 0.98f );
 	private Vector2 scrollPosition;
-
-	[SerializeField] private int idReject = 0;
-	[SerializeField] private int idAccept = 0;
-
-	[ReadOnly] [SerializeField] private string rejectText = null;
-	[ReadOnly] [SerializeField] private string acceptText = null;
-
-	private LanguageSelection bagOfWords = null;
-
-	void Awake() {
-		bagOfWords = GameObject.FindGameObjectWithTag ("GameController")
-			.GetComponent<LanguageSelection> ();
-	}
-
-	void OnEnable() {
-		LanguageSelection.OnLanguageLoad += LanguageSelection_OnLanguageLoad;
-
-	}
-
-	void OnDisable() {
-		LanguageSelection.OnLanguageLoad -= LanguageSelection_OnLanguageLoad;
-	}
-
-	private void LanguageSelection_OnLanguageLoad ()
-	{
-		OnLanguageLoad ();
-		Debug.Log ("On Load, loaded on panels.cs");
-	}
-
-	private void OnLanguageLoad () {
-		rejectText = bagOfWords.getDialog (idReject);
-		acceptText = bagOfWords.getDialog (idAccept);
-	}
 		
 	void AddSpikes (float winX) {
 		spikeCount = (int)Mathf.Floor (winX - 152) / 22;
@@ -256,10 +225,10 @@ public class Panels : MonoBehaviour {
 			GUILayout.Space(8);
 		}
 		GUILayout.BeginHorizontal ();
-		if (GUILayout.Button (rejectText)) {
+		if (GUILayout.Button (s_reject)) {
 			InteractScript.isHoldingObject = false;
 		}
-		GUILayout.Button (acceptText);
+		GUILayout.Button (s_accept);
 		GUILayout.EndHorizontal ();
 		GUILayout.EndVertical();
 
