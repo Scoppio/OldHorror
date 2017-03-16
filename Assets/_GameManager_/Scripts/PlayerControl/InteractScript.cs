@@ -9,9 +9,13 @@ public class InteractScript : MonoBehaviour {
 	public static bool isHoldingObject = false;
 	private RaycastHit hitObject;
 
-	public Texture2D cursorTexture = null;
-	public CursorMode cursorMode = CursorMode.Auto;
-	public Vector2 hotSpot = Vector2.zero;
+	[SerializeField] private Texture2D cursorTexture = null;
+	private CursorMode cursorMode = CursorMode.Auto;
+	private Vector2 hotSpot = Vector2.zero;
+
+	void Awake() {
+		Cursor.SetCursor (cursorTexture, hotSpot, cursorMode);
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -19,13 +23,14 @@ public class InteractScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
 		if(Input.GetMouseButtonDown(0))
 		{
 			Physics.Raycast(Camera.main.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0)), out hitObject);
 			if ( OnClick != null) {
-				OnClick(hitObject);
-				Debug.Log ("OnClick()!");
+				if (!isHoldingObject) {
+					OnClick (hitObject);
+					Debug.Log ("OnClick()!");
+				}
 			}
 		}
 	}

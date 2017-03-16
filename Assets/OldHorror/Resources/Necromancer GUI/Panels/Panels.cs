@@ -38,7 +38,7 @@ public class Panels : MonoBehaviour {
 	//if you're using the spikes you'll need to find sizes that work well with them these are a few...
 	private Rect windowRect0 = new Rect (500, 140, 350, 510);
 	private Rect windowRect1 = new Rect (500, 140, 350, 510);
-	private Rect windowRect4 = new Rect ( Screen.width * 0.05f, Screen.height * 0.05f, Screen.width * 0.4f, Screen.height * 0.95f );
+	private Rect windowRect4 = new Rect ( 0, 0, Screen.width * 0.4f, Screen.height * 0.98f );
 	private Vector2 scrollPosition;
 
 	void AddSpikes (float winX) {
@@ -200,9 +200,9 @@ public class Panels : MonoBehaviour {
 	*/
 	void DoClueStats (int windowID) {
 
-		AddSpikes (windowRect4.width);
-		GUILayout.Space(8);
+		//AddSpikes (windowRect4.width);
 		GUILayout.BeginVertical();
+		GUILayout.Space(44);
 		GUILayout.Label(s_title,  "BoldText");
 		GUILayout.Label ("", "Divider");
 		GUILayout.BeginHorizontal();
@@ -221,7 +221,9 @@ public class Panels : MonoBehaviour {
 			GUILayout.Space(8);
 		}
 		GUILayout.BeginHorizontal ();
-		GUILayout.Button ("Reject");
+		if (GUILayout.Button ("Reject")) {
+			InteractScript.isHoldingObject = false;
+		}
 		GUILayout.Button ("Accept");
 		GUILayout.EndHorizontal ();
 		GUILayout.EndVertical();

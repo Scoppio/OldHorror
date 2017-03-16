@@ -35,8 +35,6 @@ public class ItemOfInterest : MonoBehaviour {
 	void Awake() {
 		bagOfWords = GameObject.FindGameObjectWithTag ("GameController")
 			.GetComponent<LanguageSelection> ();
-
-		//OnLanguageLoad ();
 	}
 
 	private void OnLanguageLoad () {
@@ -63,33 +61,36 @@ public class ItemOfInterest : MonoBehaviour {
 
 	}
 
-	void LanguageSelection_OnLanguageLoad ()
-	{
-		OnLanguageLoad ();
-	}
-
 	void OnDisable() {
 		InteractScript.OnClick -= InteractScript_OnClick;
 		LanguageSelection.OnLanguageLoad -= LanguageSelection_OnLanguageLoad;
 	}
 
+	void LanguageSelection_OnLanguageLoad ()
+	{
+		OnLanguageLoad ();
+	}
+		
 	void InteractScript_OnClick (RaycastHit hitObject)
 	{
 		if ((hitObject.transform == transform && InteractScript.isHoldingObject == false) || 
 			(hitObject.transform == transform && isBeingHold)) {
 			if (hitObject.transform == transform && isBeingHold && Panels.s_cluePanel) {
-				InteractScript.isHoldingObject = false;
-				isBeingHold = false;
-				Panels.s_cluePanel = false;
+				captureOrRelease(false);
 			} else {
-				InteractScript.isHoldingObject = true;
-				Panels.s_cluePanel = true;
-				isBeingHold = true;
+				captureOrRelease(true);
 			}
 			Debug.Log ("HIT " + this.gameObject.name);
-			ItWasHit ();
 		}
 	}
+
+	void captureOrRelease (bool value) {
+		InteractScript.isHoldingObject = value;
+		isBeingHold = value;
+		Panels.s_cluePanel = value;
+		ItWasHit ();
+	}
+
 
 	Vector3 TargetPosition (float x, float y, float z) {
 		Vector3 ret;
@@ -126,7 +127,6 @@ public class ItemOfInterest : MonoBehaviour {
 		}
 	}
 
-
 	void MyGUI(bool state) {
 		Debug.Log ("MyGUI is " + state);
 	}
@@ -153,6 +153,10 @@ public class ItemOfInterest : MonoBehaviour {
 				Panels.s_tags = this.tags;
 				Debug.Log ("Panel title and text sent!");
 			}
-		}
+			if (!InteractScript.isHoldingObject) {
+				captureOrRelease (false);
+			}
+		} 
+
 	}
 }
