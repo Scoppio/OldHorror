@@ -37,18 +37,9 @@ public class Panels : MonoBehaviour {
 
 	//if you're using the spikes you'll need to find sizes that work well with them these are a few...
 	private Rect windowRect0 = new Rect (500, 140, 350, 510);
-	private Rect windowRect1 = new Rect (380, 40, 262, 420);
-	//private Rect windowRect2 = new Rect (700, 40, 306, 480);
-	//private Rect windowRect3 = new Rect (0, 40, 350, 500);
-	private Rect windowRect4 = new Rect (0, 20, 400, 500);
-
+	private Rect windowRect1 = new Rect (500, 140, 350, 510);
+	private Rect windowRect4 = new Rect ( Screen.width * 0.05f, Screen.height * 0.05f, Screen.width * 0.4f, Screen.height * 0.95f );
 	private Vector2 scrollPosition;
-	//private float HroizSliderValue = 0.5f;
-	//private float VertSliderValue = 0.5f;
-	private bool ToggleBTN = false;
-
-	//skin info
-	//private string NecroText ="This started as a question... How flexible is the built in GUI in unity? The answer... pretty damn flexible! At first I wasn't so sure; it seemed no one ever used it to make a non OS style GUI at least not a publicly available one. So I decided I couldn't be sure until I tried to develop a full GUI, Long story short Necromancer was the result and is now available to the general public, free for comercial and non-comercial use. I only ask that if you add something Share it.   Credits to Kevin King for the fonts.";
 
 	void AddSpikes (float winX) {
 		spikeCount = (int)Mathf.Floor (winX - 152) / 22;
@@ -76,7 +67,6 @@ public class Panels : MonoBehaviour {
 		WSwaxOffsetY = y - 115f;
 		WSribbonOffsetX = x - 114f;
 		WSribbonOffsetY = y - 83f;
-
 		GUI.Label (new Rect(WSribbonOffsetX, WSribbonOffsetY, 0, 0), "", "RibbonBlue");//-------------------------------- custom	
 		GUI.Label (new Rect(WSwaxOffsetX, WSwaxOffsetY, 0, 0), "", "WaxSeal");//-------------------------------- custom	
 	}
@@ -110,8 +100,6 @@ public class Panels : MonoBehaviour {
 		GUILayout.Label ("", "Divider");//-------------------------------- custom
 		GUILayout.Button ("Standard Button");
 		GUILayout.Button ("Short Button", "ShortButton");//-------------------------------- custom
-		GUILayout.Label ("", "Divider");//-------------------------------- custom
-		ToggleBTN = GUILayout.Toggle (ToggleBTN, "This is a Toggle Button");
 		GUILayout.Label ("", "Divider");//-------------------------------- custom
 		GUILayout.Box ("This is a textbox\n this can be expanded by using \\n");
 		GUILayout.TextField ("This is a textfield\n You cant see this text!!");
@@ -215,7 +203,7 @@ public class Panels : MonoBehaviour {
 		AddSpikes (windowRect4.width);
 		GUILayout.Space(8);
 		GUILayout.BeginVertical();
-		GUILayout.Label(s_title);
+		GUILayout.Label(s_title,  "BoldText");
 		GUILayout.Label ("", "Divider");
 		GUILayout.BeginHorizontal();
 		scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true);
@@ -272,7 +260,7 @@ public class Panels : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Debug.Log(Screen.height.ToString() + " " + Screen.width.ToString());
 	}
 	
 	// Update is called once per frame
