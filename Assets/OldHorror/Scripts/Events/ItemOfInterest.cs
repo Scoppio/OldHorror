@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Tracery;
 
 public class ItemOfInterest : MonoBehaviour {
+	
 	[SerializeField] private Transform pointOfInterest = null;
 	[SerializeField] [Range(0.1f, 10f)] private float translationSpeed = 2f;
 	[SerializeField] [Range(-2f, 2f)] private float xDistanceAdjustment = 0f;
@@ -37,17 +38,6 @@ public class ItemOfInterest : MonoBehaviour {
 			.GetComponent<LanguageSelection> ();
 	}
 
-	private void OnLanguageLoad () {
-		clueTitle = bagOfWords.getDialog (idTitle);
-		clueText =  bagOfWords.getDialog (idText);
-
-		Debug.Log (bagOfWords.getDialog (idTitle));
-
-		tags = new List<string>();
-		foreach (int idTag in idTags) {
-			tags.Add (bagOfWords.getDialog (idTag));
-		}
-	}
 
 	void Start () {
 		this.gameObject.AddComponent<Rigidbody> ();
@@ -70,7 +60,20 @@ public class ItemOfInterest : MonoBehaviour {
 	{
 		OnLanguageLoad ();
 	}
-		
+
+
+	private void OnLanguageLoad () {
+		clueTitle = bagOfWords.getDialog (idTitle);
+		clueText =  bagOfWords.getDialog (idText);
+
+		Debug.Log (bagOfWords.getDialog (idTitle));
+
+		tags = new List<string>();
+		foreach (int idTag in idTags) {
+			tags.Add (bagOfWords.getDialog (idTag));
+		}
+	}
+
 	void InteractScript_OnClick (RaycastHit hitObject)
 	{
 		if ((hitObject.transform == transform && InteractScript.isHoldingObject == false) || 

@@ -41,6 +41,39 @@ public class Panels : MonoBehaviour {
 	private Rect windowRect4 = new Rect ( 0, 0, Screen.width * 0.45f, Screen.height * 0.98f );
 	private Vector2 scrollPosition;
 
+	[SerializeField] private int idReject = 0;
+	[SerializeField] private int idAccept = 0;
+
+	[ReadOnly] [SerializeField] private string rejectText = null;
+	[ReadOnly] [SerializeField] private string acceptText = null;
+
+	private LanguageSelection bagOfWords = null;
+
+	void Awake() {
+		bagOfWords = GameObject.FindGameObjectWithTag ("GameController")
+			.GetComponent<LanguageSelection> ();
+	}
+
+	void OnEnable() {
+		LanguageSelection.OnLanguageLoad += LanguageSelection_OnLanguageLoad;
+
+	}
+
+	void OnDisable() {
+		LanguageSelection.OnLanguageLoad -= LanguageSelection_OnLanguageLoad;
+	}
+
+	private void LanguageSelection_OnLanguageLoad ()
+	{
+		OnLanguageLoad ();
+		Debug.Log ("On Load, loaded on panels.cs");
+	}
+
+	private void OnLanguageLoad () {
+		rejectText = bagOfWords.getDialog (idReject);
+		acceptText = bagOfWords.getDialog (idAccept);
+	}
+		
 	void AddSpikes (float winX) {
 		spikeCount = (int)Mathf.Floor (winX - 152) / 22;
 		GUILayout.BeginHorizontal();
@@ -214,17 +247,19 @@ public class Panels : MonoBehaviour {
 		GUILayout.Label ("", "Divider");
 		GUILayout.Space(8);
 		if (s_tags != null) {
+			GUILayout.BeginHorizontal ();
 			foreach (string s_tag in s_tags) {
 				GUILayout.Label (s_tag, "ShortLabel");//-------------------------------- custom
 			}
+			GUILayout.EndHorizontal ();
 			GUILayout.Label ("", "Divider");
 			GUILayout.Space(8);
 		}
 		GUILayout.BeginHorizontal ();
-		if (GUILayout.Button ("Reject")) {
+		if (GUILayout.Button (rejectText)) {
 			InteractScript.isHoldingObject = false;
 		}
-		GUILayout.Button ("Accept");
+		GUILayout.Button (acceptText);
 		GUILayout.EndHorizontal ();
 		GUILayout.EndVertical();
 

@@ -24,3 +24,5 @@ id,annotation,pt-br,en-us
 22,GrammarText,"Aqui entra um longo texto sobre o #Animal#",Here enters a long text about the #Animal#
 23,GrammarTag,Livro #Adjective# sobre um #Animal#,#Adjective# book about a #Animal#
 24,GrammarTag,Tem marcas de #Dirty#,There is a #Dirty# stain
+25,Reject,Rejeitar,Reject
+26,Accept,Aceitar, Accept
