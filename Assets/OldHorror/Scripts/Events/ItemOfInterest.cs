@@ -18,8 +18,8 @@ public class ItemOfInterest : MonoBehaviour {
 	[SerializeField] private int idTitle = 0;
 	[SerializeField] private int idText = 0;
 	[SerializeField] private List<int> idTags = null;
-	[SerializeField] private int idReject = 0;
-	[SerializeField] private int idAccept = 0;
+	[SerializeField] private int idReject = 25;
+	[SerializeField] private int idAccept = 26;
 
 	[ReadOnly] [SerializeField] private string clueTitle = null;
 	[ReadOnly] [SerializeField] private string clueText = null;
@@ -29,6 +29,7 @@ public class ItemOfInterest : MonoBehaviour {
 
 	private Rigidbody ownRigidbody;
 	private Vector3 startingPoint;
+	private Quaternion facingStart;
 
 	private bool colisionState = true;
 	private bool comingAndGoing = false;
@@ -47,6 +48,7 @@ public class ItemOfInterest : MonoBehaviour {
 		this.gameObject.AddComponent<Rigidbody> ();
 		ownRigidbody = GetComponent<Rigidbody> ();
 		startingPoint = transform.position;
+		facingStart = this.transform.rotation;
 	}
 		
 	void OnEnable() {
@@ -60,23 +62,24 @@ public class ItemOfInterest : MonoBehaviour {
 		LanguageSelection.OnLanguageLoad -= LanguageSelection_OnLanguageLoad;
 	}
 
-	void LanguageSelection_OnLanguageLoad ()
-	{
+	void LanguageSelection_OnLanguageLoad (){
 		OnLanguageLoad ();
 	}
-
 
 	private void OnLanguageLoad () {
 		clueTitle = bagOfWords.getDialog (idTitle);
 		clueText = bagOfWords.getDialog (idText);
 		rejectText = bagOfWords.getDialog (idReject);
 		acceptText = bagOfWords.getDialog (idAccept);
-
-		Debug.Log (bagOfWords.getDialog (idTitle));
-
 		tags = new List<string>();
+
 		foreach (int idTag in idTags) {
 			tags.Add (bagOfWords.getDialog (idTag));
+		}
+
+		if (clueTitle == null || clueText == null ||
+		    	rejectText == null || acceptText == null) {
+			Debug.LogError (this.name + " null exception, bagOfWords is empty!");
 		}
 	}
 
@@ -89,7 +92,7 @@ public class ItemOfInterest : MonoBehaviour {
 			} else {
 				captureOrRelease(true);
 			}
-			Debug.Log ("HIT " + this.gameObject.name);
+			Debug.Log ("[ OnClick() ] hit " + this.gameObject.name);
 		}
 	}
 
@@ -99,8 +102,7 @@ public class ItemOfInterest : MonoBehaviour {
 		Panels.s_cluePanel = value;
 		ItWasHit ();
 	}
-
-
+		
 	Vector3 TargetPosition (float x, float y, float z) {
 		Vector3 ret;
 		pointOfInterest.localPosition += new Vector3 (xDistanceAdjustment, yDistanceAdjustment, zDistanceAdjustment);
@@ -129,15 +131,12 @@ public class ItemOfInterest : MonoBehaviour {
 					wasHit = false;
 					this.gameObject.AddComponent<Rigidbody>();
 					ownRigidbody = GetComponent<Rigidbody>();
+					this.transform.rotation = this.facingStart;
 					//InteractScript.isHoldingObject = false;
 					//isBeingHold = false;
 				}
 			}
 		}
-	}
-
-	void MyGUI(bool state) {
-		Debug.Log ("MyGUI is " + state);
 	}
 
 	void ColisionChanger() {
@@ -162,7 +161,6 @@ public class ItemOfInterest : MonoBehaviour {
 				Panels.s_tags = this.tags;
 				Panels.s_reject = this.rejectText;
 				Panels.s_accept = this.acceptText;
-				Debug.Log ("Panel title and text sent!");
 			}
 			if (!InteractScript.isHoldingObject) {
 				captureOrRelease (false);

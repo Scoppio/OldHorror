@@ -66,10 +66,14 @@ public class LanguageSelection : MonoBehaviour {
 			Debug.Log ("Entering into foreach");
 			foreach (Dictionary<string, object> dt in dialog) {
 				if (dt ["annotation"].ToString ().StartsWith ("#")) {
-					Debug.Log (dt ["annotation"].ToString ().Substring (1) + " : " + dt [selectedLanguage].ToString ());
+					Debug.Log (dt ["annotation"].ToString ().Substring (1) + ": " + dt [selectedLanguage].ToString ());
 					grammar.PushRules (dt ["annotation"].ToString ().Substring(1), dt [selectedLanguage].ToString ().Split (','));
 				}
-				grammar.PushRules("origin", new string[] {dt [selectedLanguage].ToString()});
+				if (dt[selectedLanguage].ToString().Contains(",")) {
+					grammar.PushRules("origin", new string[] {dt [selectedLanguage].ToString()});
+				} else {
+					grammar.PushRules("origin", dt[selectedLanguage].ToString().Split(','));
+				}
 				dialogsBag.Add (grammar.Flatten("#origin#"));
 			}
 		} else {

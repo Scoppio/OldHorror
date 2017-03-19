@@ -26,3 +26,7 @@ id,annotation,pt-br,en-us
 24,GrammarTag,Tem marcas de #Dirty#,There is a #Dirty# stain
 25,Reject,Rejeitar,Reject
 26,Accept,Aceitar, Accept
+27,#Groups,"liga,comunidade,associacao,irmandade,amigos,escolhidos,eleitos","league,community,association,brothers,brotherhood,friends,chosen,elected"
+28,CultOrigins,"#Groups.capitalize# #Object# de #Metals#,#Groups.capitalize# de #Dirty#,#Adjective# #Dirty# - #Group.capitalize# #Animal# de #Metals#","#Groups.capitalize# #Metals# #Object#,#Dirty.capitalize# #Groups#,#Adjective# #Dirty# - The #Color# #Animal# #Group#"
+29,#Monster,"Azazoth,Cthulhu,Amatothep,Nyrn,Ozmiungh'n,Ftagn,Mi-Go,Har","Azazoth,Cthulhu,Amatothep,Nyrn,Ozmiungh'n,Ftagn,Mi-Go,Har"
+30,GameMonster,"#Monster#","#Monster#"

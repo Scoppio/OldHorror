@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +11,12 @@ public class Panels : MonoBehaviour {
 
 	public static bool s_cluePanel = false;
 
+	public static int s_itemId = 0;
  	public static string s_title = "Here should be a Title";
 	public static string s_text = "If there is no text here, something is very wrong!";
 	public static List<string> s_tags;
-	public static string s_reject;
-	public static string s_accept;
+	public static string s_reject = "X";
+	public static string s_accept = "V";
 
 	private float leafOffset;
 	private float frameOffset;
@@ -234,7 +236,7 @@ public class Panels : MonoBehaviour {
 
 		GUI.DragWindow (new Rect (0,0,10000,10000));
 	}
-
+		
 	void OnGUI ()
 	{
 		GUI.skin = mySkin;
